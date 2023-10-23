@@ -175,7 +175,7 @@ reboot=1
 
 update_init(){
 echo "updating init scripts..."
- /system/bin/curl -o /etc/init.d/madinstall -k -s https://raw.githubusercontent.com/C&4Axel/MADFiles/master/madinstall && chmod +x /etc/init.d/madinstall
+ /system/bin/curl -o /etc/init.d/installmad.sh -k -s https://raw.githubusercontent.com/C&4Axel/MADFiles/master/installmad.sh && chmod +x /etc/init.d/installmad.sh
 }
 
 update_dhcp(){

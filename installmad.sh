@@ -195,7 +195,7 @@ else
         pdauth="$(awk 'NR==2{print $1}' "$usbfile")"
         check_session
         origin=$(/system/bin/curl -s -k -L --user "$pdauth" "${pdserver}/autoconfig/${session_id}/origin")
-        log_msg 2 "Hello, this is madinstall from $origin! My current IP is $ip"
+        log_msg 2 "Hello, this is installmad from $origin! My current IP is $ip"
         /system/bin/curl -s -k -L -o "/data/local/pdconf" --user "$pdauth" "${pdserver}/autoconfig/${session_id}/pd"
         log_msg 2 "PD configuration downloaded to /data/local/pdconf"
         checkmac
