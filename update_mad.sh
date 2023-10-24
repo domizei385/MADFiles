@@ -174,7 +174,7 @@ reboot=1
 
 update_init(){
 echo "updating init scripts..."
- /system/bin/curl -o /etc/init.d/42installmad.sh -k -s https://raw.githubusercontent.com/C&4Axel/MADFiles/master/42installmad.sh && chmod +x /etc/init.d/42installmad.sh
+ /system/bin/curl -o /etc/init.d/42installmad.sh -k -s https://raw.githubusercontent.com/C64Axel/MADFiles/master/42installmad.sh && chmod +x /etc/init.d/42installmad.sh
 }
 
 update_dhcp(){
