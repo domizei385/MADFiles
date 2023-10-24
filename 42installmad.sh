@@ -189,7 +189,8 @@ elif [[ -f /data/local/pdconf ]] ;then
     pdauth="$pduser:$pdpass"
     check_session
 else
-    usbfile="$(find /mnt/media_rw/ -name mad_autoconf.txt|head -n1)"
+#    usbfile="$(find /mnt/media_rw/ -name mad_autoconf.txt|head -n1)"
+    usbfile="/data/local/tmp/mad_autoconf.txt"
     if [[ "$usbfile" ]] ;then
         pdserver="$(awk 'NR==1{print $1}' "$usbfile")"
         pdauth="$(awk 'NR==2{print $1}' "$usbfile")"
@@ -209,8 +210,12 @@ else
             log_msg 2 "Installed /system/bin/update_mad.sh"
         fi
         log_msg 2 "Starting install of RGC, PoGo and PD from your madmin wizard"
-        sh -x /system/bin/update_mad.sh -pdc -wa
-#		sh -x /system/bin/update_mad.sh -pdc -wr -p -wd
+        log_msg 2 "Installing RGC"
+		sh -x /system/bin/update_mad.sh -pdc -wr
+        log_msg 2 "Installing PoGo"
+		sh -x /system/bin/update_mad.sh -pdc -p
+        log_msg 2 "Installing PD"
+		sh -x /system/bin/update_mad.sh -pdc -wd
     fi
 fi
 
