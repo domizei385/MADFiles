@@ -101,7 +101,7 @@ if checkupdate "$newver" "$installedver" ;then
  done
  if ! [[ "$installedver" ]] ;then
   /system/bin/pm install -r /sdcard/Download/RemoteGpsController.apk
- else
+# else
   mv /sdcard/Download/RemoteGpsController.apk /system/priv-app/RemoteGpsController.apk
   /system/bin/chmod 644 /system/priv-app/RemoteGpsController.apk
   /system/bin/chown root:root /system/priv-app/RemoteGpsController.apk
@@ -175,19 +175,17 @@ reboot=1
 
 update_init(){
 echo "updating init scripts..."
- /system/bin/curl -o /etc/init.d/installmad.sh -k -s https://raw.githubusercontent.com/C&4Axel/MADFiles/master/installmad.sh && chmod +x /etc/init.d/installmad.sh
+ /system/bin/curl -o /etc/init.d/42installmad.sh -k -s https://raw.githubusercontent.com/C&4Axel/MADFiles/master/42installmad.sh && chmod +x /etc/init.d/42installmad.sh
 }
 
 update_dhcp(){
 grep -q net.hostname /system/build.prop && unset UpdateDHCP && return 1
 origin="$(awk -F'>' '/post_origin/{print $2}' /data/data/com.mad.pogodroid/shared_prefs/com.mad.pogodroid_preferences.xml|cut -d'<' -f1)"
-mount -o remount,rw /system
 if grep -q 'net.hostname' /system/build.prop ;then
  sed -i -e "s/^net.hostname=.*/net.hostname=${origin}/g" /system/build.prop
 else
  echo "net.hostname=${origin}" >> /system/build.prop
 fi
-mount -o remount,ro /system
 reboot=1
 }
 
