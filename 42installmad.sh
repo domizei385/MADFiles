@@ -189,7 +189,8 @@ elif [[ -f /data/local/pdconf ]] ;then
     pdauth="$pduser:$pdpass"
     check_session
 else
-    usbfile="$(find /mnt/media_rw/ -name mad_autoconf.txt|head -n1)"
+#    usbfile="$(find /mnt/media_rw/ -name mad_autoconf.txt|head -n1)"
+    usbfile="/data/local/tmp/mad_autoconf.txt"
     if [[ "$usbfile" ]] ;then
         pdserver="$(awk 'NR==1{print $1}' "$usbfile")"
         pdauth="$(awk 'NR==2{print $1}' "$usbfile")"
