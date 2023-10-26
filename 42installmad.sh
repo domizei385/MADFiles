@@ -269,7 +269,7 @@ if [[ "$(pm list packages de.grennith.rgc.remotegpscontroller)" ]] && ! dumpsys 
 fi
 
 # Hiding NAV Bar 
-/system/bin/settings put global policy_control immersive.status=*
+/system/bin/settings put global policy_control immersive.full=*
 
 if [[ -f /sdcard/reg_session ]] && [[ -f "$pdconf" ]] && [[ -f "$rgcconf" ]] ;then
     /system/bin/curl -s -k -L -X DELETE --user "$pdauth" "${pdserver}/autoconfig/${session_id}/complete"
