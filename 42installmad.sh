@@ -268,6 +268,9 @@ if [[ "$(pm list packages de.grennith.rgc.remotegpscontroller)" ]] && ! dumpsys 
     pm grant de.grennith.rgc.remotegpscontroller android.permission.WRITE_EXTERNAL_STORAGE
 fi
 
+# Hiding NAV Bar 
+/system/bin/settings put global policy_control immersive.status=*
+
 if [[ -f /sdcard/reg_session ]] && [[ -f "$pdconf" ]] && [[ -f "$rgcconf" ]] ;then
     /system/bin/curl -s -k -L -X DELETE --user "$pdauth" "${pdserver}/autoconfig/${session_id}/complete"
     rm -f /sdcard/reg_session
